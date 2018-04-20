@@ -32,7 +32,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-import io.github.UltimateBrowserProject.R;
+import on.browser.pro.R;
 
 /**
  * Author: alex askerov

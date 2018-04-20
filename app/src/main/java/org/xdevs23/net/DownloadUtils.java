@@ -21,7 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import io.github.UltimateBrowserProject.Activity.UpdateActivity;
+import on.browser.pro.Activity.UpdateActivity;
 
 
 public class DownloadUtils {

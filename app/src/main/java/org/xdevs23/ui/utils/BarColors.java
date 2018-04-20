@@ -6,7 +6,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.Window;
 import android.view.WindowManager;
 
-import io.github.UltimateBrowserProject.R;
+import on.browser.pro.R;
 
 public class BarColors {
 

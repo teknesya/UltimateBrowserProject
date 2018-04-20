@@ -3,7 +3,7 @@ package org.xdevs23.ui.view.listview;
 import android.content.Context;
 import android.widget.ArrayAdapter;
 
-import io.github.UltimateBrowserProject.R;
+import on.browser.pro.R;
 
 /**
  * Custom ListView

@@ -17,13 +17,13 @@ repositories {
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
-        applicationId "io.github.UltimateBrowserProject"
+        applicationId "on.browser.pro"
         //noinspection HighAppVersionCode
-        versionCode 2017031801
-        versionName "3.0.0"
+        versionCode 1
+        versionName "1.0"
         minSdkVersion 16
         targetSdkVersion 25
     }

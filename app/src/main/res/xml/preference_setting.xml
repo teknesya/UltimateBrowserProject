@@ -5,14 +5,14 @@
 
     <PreferenceCategory android:title="@string/setting_title_browser">
 
-        <io.github.UltimateBrowserProject.View.SearchEngineListPreference
+        <on.browser.pro.View.SearchEngineListPreference
             android:key="@string/sp_search_engine"
             android:defaultValue="0"
             android:title="@string/setting_title_search_engine"
             android:summary="@string/setting_summary_search_engine_google"
             android:entries="@array/setting_entries_search_engine"
             android:entryValues="@array/setting_values_search_engine">
-        </io.github.UltimateBrowserProject.View.SearchEngineListPreference>
+        </on.browser.pro.View.SearchEngineListPreference>
 
         <ListPreference android:key="@string/sp_notification_priority"
             android:defaultValue="0"
@@ -102,14 +102,14 @@
             android:buttonTint="@color/blue_accent_200">
         </CheckBoxPreference>
 
-        <io.github.UltimateBrowserProject.View.UserAgentListPreference
+        <on.browser.pro.View.UserAgentListPreference
             android:key="@string/sp_user_agent"
             android:defaultValue="0"
             android:title="@string/setting_title_user_agent"
             android:summary="@string/setting_summary_user_agent_default"
             android:entries="@array/setting_entries_user_agent"
             android:entryValues="@array/setting_values_user_agent">
-        </io.github.UltimateBrowserProject.View.UserAgentListPreference>
+        </on.browser.pro.View.UserAgentListPreference>
 
         <ListPreference android:key="@string/sp_rendering"
             android:defaultValue="0"

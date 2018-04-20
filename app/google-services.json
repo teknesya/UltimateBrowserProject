@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "398947401037",
-    "firebase_url": "https://ubproject-7fcbf.firebaseio.com",
-    "project_id": "ubproject-7fcbf",
-    "storage_bucket": "ubproject-7fcbf.appspot.com"
+    "project_number": "317114280093",
+    "firebase_url": "https://onbrowser-pro.firebaseio.com",
+    "project_id": "onbrowser-pro",
+    "storage_bucket": "onbrowser-pro.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:398947401037:android:210b508dda01efcf",
+        "mobilesdk_app_id": "1:317114280093:android:8a367bd58cc621c1",
         "android_client_info": {
-          "package_name": "io.github.UltimateBrowserProject"
+          "package_name": "on.browser.pro"
         }
       },
       "oauth_client": [
         {
-          "client_id": "398947401037-7t3eb01u5mm7phfd3iap0c8rhageamdu.apps.googleusercontent.com",
+          "client_id": "317114280093-858ctmdgj0hlud9s1ab0i8rre50qcho6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAWt5aIIUy1dvywUvxFWwvMRGHGIX0ec-k"
+          "current_key": "AIzaSyAf9flX9qX87-R5J_p_jMLFxJ7ZGw1XtGA"
         }
       ],
       "services": {

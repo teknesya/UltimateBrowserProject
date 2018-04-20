@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="io.github.UltimateBrowserProject">
+          package="on.browser.pro">
 
     <!-- Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,14 +15,14 @@
 
     <!-- Application -->
     <application android:label="@string/app_name"
-                 android:name=".Application.UltimateBrowserProjectApplication"
+                 android:name="on.browser.pro.Application.UltimateBrowserProjectApplication"
                  android:icon="@drawable/ic_launcher"
                  android:allowBackup="true"
                  android:enabled="true"
                  android:largeHeap="true">
 
         <!-- HolderActivity -->
-        <activity android:name=".Activity.HolderActivity"
+        <activity android:name="on.browser.pro.Activity.HolderActivity"
                   android:label="@string/app_name"
                   android:launchMode="singleTask"
                   android:theme="@android:style/Theme.Translucent">
@@ -36,13 +36,13 @@
         </activity>
 
         <!-- HolderService -->
-        <service android:name=".Service.HolderService"
+        <service android:name="on.browser.pro.Service.HolderService"
                  android:label="@string/app_name"
                  android:icon="@drawable/ic_launcher">
         </service>
 
         <!-- BrowserActivity -->
-        <activity android:name=".Activity.BrowserActivity"
+        <activity android:name="on.browser.pro.Activity.BrowserActivity"
                   android:label="@string/app_name"
                   android:launchMode="singleInstance"
                   android:configChanges="orientation|keyboardHidden|screenSize"
@@ -71,61 +71,61 @@
 
         <!-- UpdateActivity -->
         <activity
-            android:name=".Activity.UpdateActivity"
+            android:name="on.browser.pro.Activity.UpdateActivity"
             android:label="Updater"
             android:launchMode="singleTop"
             android:configChanges="orientation|screenSize"
-            android:parentActivityName=".Activity.SettingActivity"
+            android:parentActivityName="on.browser.pro.Activity.SettingActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activity.SettingActivity" />
+                android:value="on.browser.pro.Activity.SettingActivity" />
         </activity>
 
         <!-- ReadabilityActivity -->
-        <activity android:name=".Activity.ReadabilityActivity"
+        <activity android:name="on.browser.pro.Activity.ReadabilityActivity"
                   android:label="@string/readability_label"
                   android:theme="@style/ReadabilityActivityTheme">
         </activity>
 
         <!-- SettingActivity -->
-        <activity android:name=".Activity.SettingActivity"
+        <activity android:name="on.browser.pro.Activity.SettingActivity"
                   android:label="@string/setting_label"
                   android:theme="@style/SettingActivityTheme">
         </activity>
 
         <!-- PrintDialog -->
-        <activity android:name=".Print.PrintDialogActivity"
+        <activity android:name="on.browser.pro.Print.PrintDialogActivity"
                   android:theme="@android:style/Theme.NoTitleBar"
                   android:exported="false">
         </activity>
 
         <!-- WhitelistActivity -->
-        <activity android:name=".Activity.WhitelistActivity"
+        <activity android:name="on.browser.pro.Activity.WhitelistActivity"
                   android:label="@string/whitelist_label"
                   android:theme="@style/WhitelistActivityTheme">
         </activity>
 
         <!-- TokenActivity -->
-        <activity android:name=".Activity.TokenActivity"
+        <activity android:name="on.browser.pro.Activity.TokenActivity"
                   android:label="@string/token_label"
                   android:theme="@style/TokenActivityTheme">
         </activity>
 
         <!-- ClearActivity -->
-        <activity android:name=".Activity.ClearActivity"
+        <activity android:name="on.browser.pro.Activity.ClearActivity"
                   android:label="@string/clear_label"
                   android:theme="@style/ClearActivityTheme">
         </activity>
 
         <!-- ClearService -->
-        <service android:name=".Service.ClearService"
+        <service android:name="on.browser.pro.Service.ClearService"
                  android:label="@string/app_name"
                  android:icon="@drawable/ic_launcher">
         </service>
 
         <meta-data
-            android:name="io.fabric.ApiKey"
+            android:name="on.fabric.ApiKey"
             android:value="PASTE FABRIC API KEY HERE" />  //Stop using my key, I don't want anyone else's crash reports!
 
     </application>
