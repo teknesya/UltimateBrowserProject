@@ -84,7 +84,6 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import on.browser.pro.Application.Changelog;
 import on.browser.pro.Browser.AdBlock;
 import on.browser.pro.Browser.AlbumController;
 import on.browser.pro.Browser.BrowserContainer;
@@ -108,9 +107,9 @@ import on.browser.pro.View.GridItem;
 import on.browser.pro.View.RecordAdapter;
 import on.browser.pro.View.SwipeToBoundListener;
 import on.browser.pro.View.TabSwitcher;
-import on.browser.pro.View.UltimateBrowserProjectRelativeLayout;
-import on.browser.pro.View.UltimateBrowserProjectToast;
-import on.browser.pro.View.UltimateBrowserProjectWebView;
+import on.browser.pro.View.OnBrowserProRelativeLayout;
+import on.browser.pro.View.OnBrowserProToast;
+import on.browser.pro.View.OnBrowserProWebView;
 
 public class BrowserActivity extends Activity implements BrowserController {
 
@@ -143,7 +142,7 @@ public class BrowserActivity extends Activity implements BrowserController {
     private static LinearLayout switcherContainer;
     private static ImageButton omniboxOverflow              = null;
     private static TabSwitcher tabSwitcher                  = null;
-    private static UltimateBrowserProjectWebView ubpWebView = null;
+    private static OnBrowserProWebView ubpWebView = null;
 
     private static Context  staticContext   = null;
     private static Window   staticWindow    = null;
@@ -381,7 +380,7 @@ public class BrowserActivity extends Activity implements BrowserController {
         insideMainView = (RelativeLayout) findViewById(R.id.main_view);
 
         logd("Checking for update");
-        new Changelog(this, R.xml.changelog).showWhatsNew();
+        //new Changelog(this, R.xml.changelog).showWhatsNew();
         mHandler = new Handler();
         checkUpdate.start();
 
@@ -414,7 +413,7 @@ public class BrowserActivity extends Activity implements BrowserController {
 
     }
 
-    public static UltimateBrowserProjectWebView getUbpWebView() { return ubpWebView; }
+    public static OnBrowserProWebView getUbpWebView() { return ubpWebView; }
 
     public static View getStaticView() { return staticView; }
 
@@ -460,8 +459,8 @@ public class BrowserActivity extends Activity implements BrowserController {
 
         if (IntentUnit.isSPChange()) {
             for (AlbumController controller : BrowserContainer.list()) {
-                if (controller instanceof UltimateBrowserProjectWebView)
-                    ((UltimateBrowserProjectWebView) controller).initPreferences();
+                if (controller instanceof OnBrowserProWebView)
+                    ((OnBrowserProWebView) controller).initPreferences();
             }
 
             IntentUnit.setSPChange(false);
@@ -516,8 +515,8 @@ public class BrowserActivity extends Activity implements BrowserController {
 
         create = false;
         inputBox.clearFocus();
-        if (currentAlbumController != null && currentAlbumController instanceof UltimateBrowserProjectRelativeLayout) {
-            UltimateBrowserProjectRelativeLayout layout = (UltimateBrowserProjectRelativeLayout) currentAlbumController;
+        if (currentAlbumController != null && currentAlbumController instanceof OnBrowserProRelativeLayout) {
+            OnBrowserProRelativeLayout layout = (OnBrowserProRelativeLayout) currentAlbumController;
             if (layout.getFlag() == BrowserUnit.FLAG_HOME) {
                 DynamicGridView gridView = (DynamicGridView) layout.findViewById(R.id.home_grid);
                 if (gridView.isEditMode()) {
@@ -562,8 +561,8 @@ public class BrowserActivity extends Activity implements BrowserController {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         logd("Config changed!");
-        if (currentAlbumController != null && currentAlbumController instanceof UltimateBrowserProjectRelativeLayout) {
-            UltimateBrowserProjectRelativeLayout layout = (UltimateBrowserProjectRelativeLayout) currentAlbumController;
+        if (currentAlbumController != null && currentAlbumController instanceof OnBrowserProRelativeLayout) {
+            OnBrowserProRelativeLayout layout = (OnBrowserProRelativeLayout) currentAlbumController;
             if (layout.getFlag() == BrowserUnit.FLAG_HOME) {
                 DynamicGridView gridView = (DynamicGridView) layout.findViewById(R.id.home_grid);
                 if (gridView.isEditMode()) {
@@ -582,8 +581,8 @@ public class BrowserActivity extends Activity implements BrowserController {
 
         super.onConfigurationChanged(newConfig);
 
-        if (currentAlbumController != null && currentAlbumController instanceof UltimateBrowserProjectRelativeLayout) {
-            UltimateBrowserProjectRelativeLayout layout = (UltimateBrowserProjectRelativeLayout) currentAlbumController;
+        if (currentAlbumController != null && currentAlbumController instanceof OnBrowserProRelativeLayout) {
+            OnBrowserProRelativeLayout layout = (OnBrowserProRelativeLayout) currentAlbumController;
             if (layout.getFlag() == BrowserUnit.FLAG_HOME) {
                 initHomeGrid(layout, true);
                 omnibox.setVisibility(View.VISIBLE);
@@ -676,18 +675,18 @@ public class BrowserActivity extends Activity implements BrowserController {
         switcherPrint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (currentAlbumController != null && currentAlbumController instanceof UltimateBrowserProjectRelativeLayout) {
-                    UltimateBrowserProjectRelativeLayout layout = (UltimateBrowserProjectRelativeLayout) currentAlbumController;
+                if (currentAlbumController != null && currentAlbumController instanceof OnBrowserProRelativeLayout) {
+                    OnBrowserProRelativeLayout layout = (OnBrowserProRelativeLayout) currentAlbumController;
                     if(layout.getFlag()== BrowserUnit.FLAG_HOME) {
                         Toast.makeText(BrowserActivity.this,
                                 "Nothing to print here!",
                                 Toast.LENGTH_SHORT).show();
                     }
                 }
-                else if(currentAlbumController != null && currentAlbumController instanceof UltimateBrowserProjectWebView) {
-                        UltimateBrowserProjectWebView UltimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
-                        String title = UltimateBrowserProjectWebView.getTitle();
-                        String url = UltimateBrowserProjectWebView.getUrl();
+                else if(currentAlbumController != null && currentAlbumController instanceof OnBrowserProWebView) {
+                        OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
+                        String title = OnBrowserProWebView.getTitle();
+                        String url = OnBrowserProWebView.getUrl();
                         final String targetCache = url;
                         BrowserUnit.downloadCache(BrowserActivity.this, targetCache, targetCache, URLConnection.guessContentTypeFromName(targetCache));
                         if (!isNetworkAvailable()) {
@@ -785,7 +784,7 @@ public class BrowserActivity extends Activity implements BrowserController {
                 if (canSwitch) {
                     AlbumController controller = nextAlbumController(left);
                     showAlbum(controller, false, false, true);
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, controller.getAlbumTitle());
+                    OnBrowserProToast.show(BrowserActivity.this, controller.getAlbumTitle());
                 }
             }
         }));
@@ -799,7 +798,7 @@ public class BrowserActivity extends Activity implements BrowserController {
 
                 String query = inputBox.getText().toString().trim();
                 if (query.isEmpty()) {
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_input_empty);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_input_empty);
                     return true;
                 }
 
@@ -818,22 +817,22 @@ public class BrowserActivity extends Activity implements BrowserController {
             @Override
             public void onClick(View v) {
                 if (!prepareRecord()) {
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_add_bookmark_failed);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_add_bookmark_failed);
                     return;
                 }
 
-                UltimateBrowserProjectWebView UltimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
-                String title = UltimateBrowserProjectWebView.getTitle();
-                String url = UltimateBrowserProjectWebView.getUrl();
+                OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
+                String title = OnBrowserProWebView.getTitle();
+                String url = OnBrowserProWebView.getUrl();
 
                 RecordAction action = new RecordAction(BrowserActivity.this);
                 action.open(true);
                 if (action.checkBookmark(url)) {
                     action.deleteBookmark(url);
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_delete_bookmark_successful);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_delete_bookmark_successful);
                 } else {
                     action.addBookmark(new Record(title, url, System.currentTimeMillis()));
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_add_bookmark_successful);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_add_bookmark_successful);
                 }
                 action.close();
 
@@ -846,19 +845,19 @@ public class BrowserActivity extends Activity implements BrowserController {
             @Override
             public void onClick(View v) {
                 if (currentAlbumController == null) {
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_refresh_failed);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_refresh_failed);
                     return;
                 }
 
-                if (currentAlbumController instanceof UltimateBrowserProjectWebView) {
-                    UltimateBrowserProjectWebView UltimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
-                    if (UltimateBrowserProjectWebView.isLoadFinish()) {
-                        UltimateBrowserProjectWebView.reload();
+                if (currentAlbumController instanceof OnBrowserProWebView) {
+                    OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
+                    if (OnBrowserProWebView.isLoadFinish()) {
+                        OnBrowserProWebView.reload();
                     } else {
-                        UltimateBrowserProjectWebView.stopLoading();
+                        OnBrowserProWebView.stopLoading();
                     }
-                } else if (currentAlbumController instanceof UltimateBrowserProjectRelativeLayout) {
-                    final UltimateBrowserProjectRelativeLayout layout = (UltimateBrowserProjectRelativeLayout) currentAlbumController;
+                } else if (currentAlbumController instanceof OnBrowserProRelativeLayout) {
+                    final OnBrowserProRelativeLayout layout = (OnBrowserProRelativeLayout) currentAlbumController;
                     if (layout.getFlag() == BrowserUnit.FLAG_HOME) {
                         initHomeGrid(layout, true);
                         omnibox.setVisibility(View.VISIBLE);
@@ -866,7 +865,7 @@ public class BrowserActivity extends Activity implements BrowserController {
                     }
                     initBHList(layout, true);
                 } else {
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_refresh_failed);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_refresh_failed);
                 }
             }
         });
@@ -882,15 +881,15 @@ public class BrowserActivity extends Activity implements BrowserController {
             @Override
             public void onClick(View v) {
                 if (currentAlbumController == null) {
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_cannot_forward);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_cannot_forward);
                     return;
                 }
-                if (currentAlbumController instanceof UltimateBrowserProjectWebView) {
-                    UltimateBrowserProjectWebView ultimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
-                    if (ultimateBrowserProjectWebView.canGoForward()) {
-                        ultimateBrowserProjectWebView.goForward();
-                    } else if (currentAlbumController instanceof UltimateBrowserProjectRelativeLayout) {
-                        final UltimateBrowserProjectRelativeLayout layout = (UltimateBrowserProjectRelativeLayout) currentAlbumController;
+                if (currentAlbumController instanceof OnBrowserProWebView) {
+                    OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
+                    if (OnBrowserProWebView.canGoForward()) {
+                        OnBrowserProWebView.goForward();
+                    } else if (currentAlbumController instanceof OnBrowserProRelativeLayout) {
+                        final OnBrowserProRelativeLayout layout = (OnBrowserProRelativeLayout) currentAlbumController;
                         if (layout.getFlag() == BrowserUnit.FLAG_HOME) {
                             initHomeGrid(layout, true);
                             omnibox.setVisibility(View.VISIBLE);
@@ -898,7 +897,7 @@ public class BrowserActivity extends Activity implements BrowserController {
                         }
                         initBHList(layout, true);
                     } else
-                        UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_cannot_forward);
+                        OnBrowserProToast.show(BrowserActivity.this, R.string.toast_cannot_forward);
                 }
             }
         });
@@ -976,7 +975,7 @@ public class BrowserActivity extends Activity implements BrowserController {
     };
 
 
-    private void initHomeGrid(final UltimateBrowserProjectRelativeLayout layout, boolean update) {
+    private void initHomeGrid(final OnBrowserProRelativeLayout layout, boolean update) {
         if (update)
             updateProgress(BrowserUnit.PROGRESS_MIN);
 
@@ -1024,7 +1023,7 @@ public class BrowserActivity extends Activity implements BrowserController {
         });
     }
 
-    private void initBHList(final UltimateBrowserProjectRelativeLayout layout, boolean update) {
+    private void initBHList(final OnBrowserProRelativeLayout layout, boolean update) {
         if (update)
             updateProgress(BrowserUnit.PROGRESS_MIN);
 
@@ -1100,8 +1099,8 @@ public class BrowserActivity extends Activity implements BrowserController {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (currentAlbumController != null && currentAlbumController instanceof UltimateBrowserProjectWebView)
-                    ((UltimateBrowserProjectWebView) currentAlbumController).findAllAsync(s.toString());
+                if (currentAlbumController != null && currentAlbumController instanceof OnBrowserProWebView)
+                    ((OnBrowserProWebView) currentAlbumController).findAllAsync(s.toString());
             }
         });
 
@@ -1113,7 +1112,7 @@ public class BrowserActivity extends Activity implements BrowserController {
                 }
 
                 if (searchBox.getText().toString().isEmpty()) {
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_input_empty);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_input_empty);
                     return true;
                 }
                 return false;
@@ -1125,13 +1124,13 @@ public class BrowserActivity extends Activity implements BrowserController {
             public void onClick(View v) {
                 String query = searchBox.getText().toString();
                 if (query.isEmpty()) {
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_input_empty);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_input_empty);
                     return;
                 }
 
                 hideSoftInput(searchBox);
-                if (currentAlbumController instanceof UltimateBrowserProjectWebView)
-                    ((UltimateBrowserProjectWebView) currentAlbumController).findNext(false);
+                if (currentAlbumController instanceof OnBrowserProWebView)
+                    ((OnBrowserProWebView) currentAlbumController).findNext(false);
 
             }
         });
@@ -1141,13 +1140,13 @@ public class BrowserActivity extends Activity implements BrowserController {
             public void onClick(View v) {
                 String query = searchBox.getText().toString();
                 if (query.isEmpty()) {
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_input_empty);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_input_empty);
                     return;
                 }
 
                 hideSoftInput(searchBox);
-                if (currentAlbumController instanceof UltimateBrowserProjectWebView)
-                    ((UltimateBrowserProjectWebView) currentAlbumController).findNext(true);
+                if (currentAlbumController instanceof OnBrowserProWebView)
+                    ((OnBrowserProWebView) currentAlbumController).findNext(true);
 
             }
         });
@@ -1164,7 +1163,7 @@ public class BrowserActivity extends Activity implements BrowserController {
         logd("Adding album...");
         final AlbumController holder;
         if (flag == BrowserUnit.FLAG_BOOKMARKS) {
-            UltimateBrowserProjectRelativeLayout layout = (UltimateBrowserProjectRelativeLayout)
+            OnBrowserProRelativeLayout layout = (OnBrowserProRelativeLayout)
                     getLayoutInflater().inflate(R.layout.record_list, null, false);
 
             layout.setBrowserController(this);
@@ -1174,7 +1173,7 @@ public class BrowserActivity extends Activity implements BrowserController {
             holder = layout;
             initBHList(layout, false);
         } else if (flag == BrowserUnit.FLAG_HISTORY) {
-            UltimateBrowserProjectRelativeLayout layout = (UltimateBrowserProjectRelativeLayout)
+            OnBrowserProRelativeLayout layout = (OnBrowserProRelativeLayout)
                     getLayoutInflater().inflate(R.layout.record_list, null, false);
 
             layout.setBrowserController(this);
@@ -1184,7 +1183,7 @@ public class BrowserActivity extends Activity implements BrowserController {
             holder = layout;
             initBHList(layout, false);
         } else if (flag == BrowserUnit.FLAG_HOME) {
-            UltimateBrowserProjectRelativeLayout layout = (UltimateBrowserProjectRelativeLayout)
+            OnBrowserProRelativeLayout layout = (OnBrowserProRelativeLayout)
                     getLayoutInflater().inflate(R.layout.home, null, false);
 
             layout.setBrowserController(this);
@@ -1226,9 +1225,9 @@ public class BrowserActivity extends Activity implements BrowserController {
 
     private synchronized void addAlbum(String title, final String url, final boolean foreground, final Message resultMsg) {
         logd("Adding album... (2)");
-        final UltimateBrowserProjectWebView webView = new UltimateBrowserProjectWebView(this);
+        final OnBrowserProWebView webView = new OnBrowserProWebView(this);
         webView.setBrowserController(this);
-        webView.setFlag(BrowserUnit.FLAG_UltimateBrowserProject);
+        webView.setFlag(BrowserUnit.FLAG_OnBrowserPro);
         webView.setAlbumCover(ViewUnit.capture(webView, dimen144dp, dimen108dp, false, Bitmap.Config.RGB_565));
         webView.setAlbumTitle(title);
         setBound(webView);
@@ -1243,7 +1242,7 @@ public class BrowserActivity extends Activity implements BrowserController {
         }
 
         final View albumView = webView.getAlbumView();
-        if (currentAlbumController != null && (currentAlbumController instanceof UltimateBrowserProjectWebView) && resultMsg != null) {
+        if (currentAlbumController != null && (currentAlbumController instanceof OnBrowserProWebView) && resultMsg != null) {
             int index = BrowserContainer.indexOf(currentAlbumController) + 1;
             BrowserContainer.add(webView, index);
             switcherContainer.addView(albumView, index, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
@@ -1300,10 +1299,10 @@ public class BrowserActivity extends Activity implements BrowserController {
 
         for (AlbumController controller : BrowserContainer.list()) {
             try {
-                if (controller instanceof UltimateBrowserProjectWebView)
-                    ((UltimateBrowserProjectWebView) controller).setBrowserController(this);
-                else if (controller instanceof UltimateBrowserProjectRelativeLayout)
-                    ((UltimateBrowserProjectRelativeLayout) controller).setBrowserController(this);
+                if (controller instanceof OnBrowserProWebView)
+                    ((OnBrowserProWebView) controller).setBrowserController(this);
+                else if (controller instanceof OnBrowserProRelativeLayout)
+                    ((OnBrowserProRelativeLayout) controller).setBrowserController(this);
             } catch(IllegalStateException ex) {
                 Toast.makeText(getContext(),
                         "Error occured while pinning albums. " +
@@ -1339,9 +1338,9 @@ public class BrowserActivity extends Activity implements BrowserController {
                 }
             }, shortAnimTime);
         } else { // When url != null
-            UltimateBrowserProjectWebView webView = new UltimateBrowserProjectWebView(this);
+            OnBrowserProWebView webView = new OnBrowserProWebView(this);
             webView.setBrowserController(this);
-            webView.setFlag(BrowserUnit.FLAG_UltimateBrowserProject);
+            webView.setFlag(BrowserUnit.FLAG_OnBrowserPro);
             webView.setAlbumCover(ViewUnit.capture(webView, dimen144dp, dimen108dp, false, Bitmap.Config.RGB_565));
             webView.setAlbumTitle(getString(R.string.album_untitled));
             setBound(webView);
@@ -1448,7 +1447,7 @@ public class BrowserActivity extends Activity implements BrowserController {
             return;
 
 
-        UltimateBrowserProjectRelativeLayout layout = (UltimateBrowserProjectRelativeLayout) getLayoutInflater().inflate(R.layout.home, null, false);
+        OnBrowserProRelativeLayout layout = (OnBrowserProRelativeLayout) getLayoutInflater().inflate(R.layout.home, null, false);
         layout.setBrowserController(this);
         layout.setFlag(BrowserUnit.FLAG_HOME);
         layout.setAlbumCover(ViewUnit.capture(layout, dimen144dp, dimen108dp, false, Bitmap.Config.RGB_565));
@@ -1475,13 +1474,13 @@ public class BrowserActivity extends Activity implements BrowserController {
         if (currentAlbumController == null)
             return;
 
-        if (currentAlbumController instanceof UltimateBrowserProjectWebView) {
-            ((UltimateBrowserProjectWebView) currentAlbumController).loadUrl(url);
+        if (currentAlbumController instanceof OnBrowserProWebView) {
+            ((OnBrowserProWebView) currentAlbumController).loadUrl(url);
             updateOmnibox();
-        } else if (currentAlbumController instanceof UltimateBrowserProjectRelativeLayout) {
-            UltimateBrowserProjectWebView webView = new UltimateBrowserProjectWebView(this);
+        } else if (currentAlbumController instanceof OnBrowserProRelativeLayout) {
+            OnBrowserProWebView webView = new OnBrowserProWebView(this);
             webView.setBrowserController(this);
-            webView.setFlag(BrowserUnit.FLAG_UltimateBrowserProject);
+            webView.setFlag(BrowserUnit.FLAG_OnBrowserPro);
             webView.setAlbumCover(ViewUnit.capture(webView, dimen144dp, dimen108dp, false, Bitmap.Config.RGB_565));
             webView.setAlbumTitle(getString(R.string.album_untitled));
             setBound(webView);
@@ -1499,7 +1498,7 @@ public class BrowserActivity extends Activity implements BrowserController {
 
             webView.loadUrl(url);
             updateOmnibox();
-        } else UltimateBrowserProjectToast.show(this, R.string.toast_load_error);
+        } else OnBrowserProToast.show(this, R.string.toast_load_error);
 
         omnibox.bringToFront();
     }
@@ -1561,14 +1560,14 @@ public class BrowserActivity extends Activity implements BrowserController {
 
     @Override
     public void updateBookmarks() {
-        if (currentAlbumController == null || !(currentAlbumController instanceof UltimateBrowserProjectWebView)) {
+        if (currentAlbumController == null || !(currentAlbumController instanceof OnBrowserProWebView)) {
             omniboxBookmark.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.bookmark_selector_dark));
             return;
         }
 
         RecordAction action = new RecordAction(this);
         action.open(false);
-        String url = ((UltimateBrowserProjectWebView) currentAlbumController).getUrl();
+        String url = ((OnBrowserProWebView) currentAlbumController).getUrl();
         if (action.checkBookmark(url))
             omniboxBookmark.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.bookmark_selector_blue));
         else
@@ -1594,20 +1593,20 @@ public class BrowserActivity extends Activity implements BrowserController {
             if (currentAlbumController == null)
                 return;
 
-            if (currentAlbumController instanceof UltimateBrowserProjectRelativeLayout) {
+            if (currentAlbumController instanceof OnBrowserProRelativeLayout) {
                 updateProgress(BrowserUnit.PROGRESS_MAX);
                 updateBookmarks();
                 updateInputBox(null);
-            } else if (currentAlbumController instanceof UltimateBrowserProjectWebView) {
-                UltimateBrowserProjectWebView UltimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
-                updateProgress(UltimateBrowserProjectWebView.getProgress());
+            } else if (currentAlbumController instanceof OnBrowserProWebView) {
+                OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
+                updateProgress(OnBrowserProWebView.getProgress());
                 updateBookmarks();
-                if (UltimateBrowserProjectWebView.getUrl() == null && UltimateBrowserProjectWebView.getOriginalUrl() == null) {
+                if (OnBrowserProWebView.getUrl() == null && OnBrowserProWebView.getOriginalUrl() == null) {
                     updateInputBox(null);
-                } else if (UltimateBrowserProjectWebView.getUrl() != null) {
-                    updateInputBox(UltimateBrowserProjectWebView.getUrl());
+                } else if (OnBrowserProWebView.getUrl() != null) {
+                    updateInputBox(OnBrowserProWebView.getUrl());
                 } else {
-                    updateInputBox(UltimateBrowserProjectWebView.getOriginalUrl());
+                    updateInputBox(OnBrowserProWebView.getOriginalUrl());
                 }
             }
         } catch(NullPointerException ex) {
@@ -1681,7 +1680,7 @@ public class BrowserActivity extends Activity implements BrowserController {
                 Intent intent = fileChooserParams.createIntent();
                 startActivityForResult(intent, IntentUnit.REQUEST_FILE_21);
             } catch (Exception e) {
-                UltimateBrowserProjectToast.show(this, R.string.toast_open_file_manager_failed);
+                OnBrowserProToast.show(this, R.string.toast_open_file_manager_failed);
             }
         }
     }
@@ -1782,10 +1781,10 @@ public class BrowserActivity extends Activity implements BrowserController {
     @Override
     public void onLongPress(String url) {
         WebView.HitTestResult result;
-        if (!(currentAlbumController instanceof UltimateBrowserProjectWebView))
+        if (!(currentAlbumController instanceof OnBrowserProWebView))
             return;
 
-        result = ((UltimateBrowserProjectWebView) currentAlbumController).getHitTestResult();
+        result = ((OnBrowserProWebView) currentAlbumController).getHitTestResult();
 
         final List<String> list = new ArrayList<>();
         list.add(getString(R.string.main_menu_new_tab));
@@ -1818,7 +1817,7 @@ public class BrowserActivity extends Activity implements BrowserController {
                 String s = list.get(position);
                 if (s.equals(getString(R.string.main_menu_new_tab))) { // New tab
                     addAlbum(getString(R.string.album_untitled), target, false, null);
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_new_tab_successful);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_new_tab_successful);
                 } else if (s.equals(getString(R.string.main_menu_copy_link))) { // Copy link
                     BrowserUnit.copyURL(BrowserActivity.this, target);
                 } else if (s.equals(getString(R.string.main_menu_save))) {  // Save link
@@ -1840,16 +1839,16 @@ public class BrowserActivity extends Activity implements BrowserController {
 
             AlbumController controller = nextAlbumController(false);
             showAlbum(controller, false, false, true);
-            UltimateBrowserProjectToast.show(this, controller.getAlbumTitle());
+            OnBrowserProToast.show(this, controller.getAlbumTitle());
 
             return true;
-        } else if (vc == 1 && currentAlbumController instanceof UltimateBrowserProjectWebView) { // Scroll webpage
-            UltimateBrowserProjectWebView UltimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
-            int height = UltimateBrowserProjectWebView.getMeasuredHeight();
-            int scrollY = UltimateBrowserProjectWebView.getScrollY();
+        } else if (vc == 1 && currentAlbumController instanceof OnBrowserProWebView) { // Scroll webpage
+            OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
+            int height = OnBrowserProWebView.getMeasuredHeight();
+            int scrollY = OnBrowserProWebView.getScrollY();
             int distance = Math.min(height, scrollY);
 
-            ObjectAnimator anim = ObjectAnimator.ofInt(UltimateBrowserProjectWebView, "scrollY", scrollY, scrollY - distance);
+            ObjectAnimator anim = ObjectAnimator.ofInt(OnBrowserProWebView, "scrollY", scrollY, scrollY - distance);
             anim.setDuration(mediumAnimTime);
             anim.start();
             return true;
@@ -1866,17 +1865,17 @@ public class BrowserActivity extends Activity implements BrowserController {
             if (isKeyboardShowing) return true;
             AlbumController controller = nextAlbumController(true);
             showAlbum(controller, false, false, true);
-            UltimateBrowserProjectToast.show(this, controller.getAlbumTitle());
+            OnBrowserProToast.show(this, controller.getAlbumTitle());
 
             return true;
-        } else if (vc == 1 && currentAlbumController instanceof UltimateBrowserProjectWebView) {
-            UltimateBrowserProjectWebView UltimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
-            int height = UltimateBrowserProjectWebView.getMeasuredHeight();
-            int scrollY = UltimateBrowserProjectWebView.getScrollY();
-            int surplus = (int) (UltimateBrowserProjectWebView.getContentHeight() * ViewUnit.getDensity(this) - height - scrollY);
+        } else if (vc == 1 && currentAlbumController instanceof OnBrowserProWebView) {
+            OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
+            int height = OnBrowserProWebView.getMeasuredHeight();
+            int scrollY = OnBrowserProWebView.getScrollY();
+            int surplus = (int) (OnBrowserProWebView.getContentHeight() * ViewUnit.getDensity(this) - height - scrollY);
             int distance = Math.min(height, surplus);
 
-            ObjectAnimator anim = ObjectAnimator.ofInt(UltimateBrowserProjectWebView, "scrollY", scrollY, scrollY + distance);
+            ObjectAnimator anim = ObjectAnimator.ofInt(OnBrowserProWebView, "scrollY", scrollY, scrollY + distance);
             anim.setDuration(mediumAnimTime);
             anim.start();
 
@@ -1897,13 +1896,13 @@ public class BrowserActivity extends Activity implements BrowserController {
         // Don't need additional check if is expanded or not.
         if (currentAlbumController == null)
             exitApplication();
-        else if (currentAlbumController instanceof UltimateBrowserProjectWebView) {
-            UltimateBrowserProjectWebView UltimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
-            if (UltimateBrowserProjectWebView.canGoBack())
-                UltimateBrowserProjectWebView.goBack();
+        else if (currentAlbumController instanceof OnBrowserProWebView) {
+            OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
+            if (OnBrowserProWebView.canGoBack())
+                OnBrowserProWebView.goBack();
             else updateAlbum();
 
-        } else if (currentAlbumController instanceof UltimateBrowserProjectRelativeLayout) {
+        } else if (currentAlbumController instanceof OnBrowserProRelativeLayout) {
             switch (currentAlbumController.getFlag()) {
                 case BrowserUnit.FLAG_BOOKMARKS:    updateAlbum();      break;
                 case BrowserUnit.FLAG_HISTORY:      updateAlbum();      break;
@@ -1920,7 +1919,7 @@ public class BrowserActivity extends Activity implements BrowserController {
         final Timer timer = new Timer();
         if (!quit) {
             quit = true;
-            UltimateBrowserProjectToast.show(this, R.string.toast_double_taps_quit);
+            OnBrowserProToast.show(this, R.string.toast_double_taps_quit);
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
@@ -1984,7 +1983,7 @@ public class BrowserActivity extends Activity implements BrowserController {
         final String[] array = getResources().getStringArray(R.array.main_overflow);
         final List<String> stringList = new ArrayList<>();
         stringList.addAll(Arrays.asList(array));
-        if (currentAlbumController != null && currentAlbumController instanceof UltimateBrowserProjectRelativeLayout) {
+        if (currentAlbumController != null && currentAlbumController instanceof OnBrowserProRelativeLayout) {
             stringList.remove(array[overflowList.GoToTop    ]);
             stringList.remove(array[overflowList.AddToHome  ]);
             stringList.remove(array[overflowList.FindInPage ]);
@@ -1994,11 +1993,11 @@ public class BrowserActivity extends Activity implements BrowserController {
             stringList.remove(array[overflowList.SaveLinkAs ]);
             stringList.remove(array[overflowList.CreateShortcut]);
 
-            UltimateBrowserProjectRelativeLayout UltimateBrowserProjectRelativeLayout = (UltimateBrowserProjectRelativeLayout) currentAlbumController;
-            if (UltimateBrowserProjectRelativeLayout.getFlag() != BrowserUnit.FLAG_HOME)
+            OnBrowserProRelativeLayout OnBrowserProRelativeLayout = (OnBrowserProRelativeLayout) currentAlbumController;
+            if (OnBrowserProRelativeLayout.getFlag() != BrowserUnit.FLAG_HOME)
                 stringList.remove(array[overflowList.Relayout]);
 
-        } else if (currentAlbumController != null && currentAlbumController instanceof UltimateBrowserProjectWebView) {
+        } else if (currentAlbumController != null && currentAlbumController instanceof OnBrowserProWebView) {
             if (!sp.getBoolean(getString(R.string.sp_readability), false))
                 stringList.remove(array[overflowList.Readability]);
 
@@ -2019,28 +2018,28 @@ public class BrowserActivity extends Activity implements BrowserController {
                 String s = stringList.get(position);
 
                 if (s.equals(array[overflowList.GoToTop])) {
-                    UltimateBrowserProjectWebView UltimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
-                    ObjectAnimator anim = ObjectAnimator.ofInt(UltimateBrowserProjectWebView, "scrollY", UltimateBrowserProjectWebView.getScrollY(), 0);
+                    OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
+                    ObjectAnimator anim = ObjectAnimator.ofInt(OnBrowserProWebView, "scrollY", OnBrowserProWebView.getScrollY(), 0);
                     anim.setDuration(mediumAnimTime);
                     anim.start();
                 } else if (s.equals(array[overflowList.AddToHome])) {
-                    UltimateBrowserProjectWebView UltimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
+                    OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
                     RecordAction action = new RecordAction(BrowserActivity.this);
                     action.open(true);
-                    if (action.checkGridItem(UltimateBrowserProjectWebView.getUrl()))
-                        UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_already_exist_in_home);
+                    if (action.checkGridItem(OnBrowserProWebView.getUrl()))
+                        OnBrowserProToast.show(BrowserActivity.this, R.string.toast_already_exist_in_home);
                     else {
-                        String title = UltimateBrowserProjectWebView.getTitle().trim();
-                        String url = UltimateBrowserProjectWebView.getUrl().trim();
-                        Bitmap bitmap = ViewUnit.capture(UltimateBrowserProjectWebView, dimen156dp, dimen117dp, false, Bitmap.Config.ARGB_8888);
+                        String title = OnBrowserProWebView.getTitle().trim();
+                        String url = OnBrowserProWebView.getUrl().trim();
+                        Bitmap bitmap = ViewUnit.capture(OnBrowserProWebView, dimen156dp, dimen117dp, false, Bitmap.Config.ARGB_8888);
                         String filename = System.currentTimeMillis() + BrowserUnit.SUFFIX_PNG;
                         int ordinal = action.listGrid().size();
                         GridItem item = new GridItem(title, url, filename, ordinal);
 
                         if (BrowserUnit.bitmap2File(BrowserActivity.this, bitmap, filename) && action.addGridItem(item))
-                            UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_add_to_home_successful);
+                            OnBrowserProToast.show(BrowserActivity.this, R.string.toast_add_to_home_successful);
                         else
-                            UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_add_to_home_failed);
+                            OnBrowserProToast.show(BrowserActivity.this, R.string.toast_add_to_home_failed);
 
                     }
                     action.close();
@@ -2048,32 +2047,32 @@ public class BrowserActivity extends Activity implements BrowserController {
                     hideSoftInput(inputBox);
                     showSearchPanel();
                 } else if (s.equals(array[overflowList.Screenshot])) {
-                    UltimateBrowserProjectWebView UltimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
-                    new ScreenshotTask(BrowserActivity.this, UltimateBrowserProjectWebView).execute();
+                    OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
+                    new ScreenshotTask(BrowserActivity.this, OnBrowserProWebView).execute();
                 } else if (s.equals(array[overflowList.Readability])) {
                     String token = sp.getString(getString(R.string.sp_readability_token), null);
                     if (token == null || token.trim().isEmpty())
-                        UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_token_empty);
+                        OnBrowserProToast.show(BrowserActivity.this, R.string.toast_token_empty);
                     else {
-                        UltimateBrowserProjectWebView UltimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
+                        OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
                         Intent intent = new Intent(BrowserActivity.this, ReadabilityActivity.class);
-                        intent.putExtra(IntentUnit.URL, UltimateBrowserProjectWebView.getUrl());
+                        intent.putExtra(IntentUnit.URL, OnBrowserProWebView.getUrl());
                         startActivity(intent);
                     }
                 } else if (s.equals(array[overflowList.Share])) {
                     if (!prepareRecord())
-                        UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_share_failed);
+                        OnBrowserProToast.show(BrowserActivity.this, R.string.toast_share_failed);
                     else {
-                        UltimateBrowserProjectWebView UltimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
-                        IntentUnit.share(BrowserActivity.this, UltimateBrowserProjectWebView.getTitle(), UltimateBrowserProjectWebView.getUrl());
+                        OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
+                        IntentUnit.share(BrowserActivity.this, OnBrowserProWebView.getTitle(), OnBrowserProWebView.getUrl());
                     }
                 } else if (s.equals(array[overflowList.SaveLinkAs])) {
-                    UltimateBrowserProjectWebView UltimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
-                    BrowserUnit.download(BrowserActivity.this, UltimateBrowserProjectWebView.getUrl(), UltimateBrowserProjectWebView.getUrl(), URLConnection.guessContentTypeFromName(UltimateBrowserProjectWebView.getUrl()));
+                    OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
+                    BrowserUnit.download(BrowserActivity.this, OnBrowserProWebView.getUrl(), OnBrowserProWebView.getUrl(), URLConnection.guessContentTypeFromName(OnBrowserProWebView.getUrl()));
                 } else if (s.equals(array[overflowList.CreateShortcut])) {
-                    UltimateBrowserProjectWebView ultimateBrowserProjectWebView = (UltimateBrowserProjectWebView) currentAlbumController;
-                    String title = ultimateBrowserProjectWebView.getTitle();
-                    String url = ultimateBrowserProjectWebView.getUrl();
+                    OnBrowserProWebView OnBrowserProWebView = (OnBrowserProWebView) currentAlbumController;
+                    String title = OnBrowserProWebView.getTitle();
+                    String url = OnBrowserProWebView.getUrl();
                     Intent shortcutIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                     Toast.makeText(getApplicationContext(), "Shortcut successfully created",
                             Toast.LENGTH_LONG).show();
@@ -2087,8 +2086,8 @@ public class BrowserActivity extends Activity implements BrowserController {
 
                     getApplicationContext().sendBroadcast(intent);
                 } else if (s.equals(array[overflowList.Relayout])) {
-                    UltimateBrowserProjectRelativeLayout UltimateBrowserProjectRelativeLayout = (UltimateBrowserProjectRelativeLayout) currentAlbumController;
-                    final DynamicGridView gridView = (DynamicGridView) UltimateBrowserProjectRelativeLayout.findViewById(R.id.home_grid);
+                    OnBrowserProRelativeLayout OnBrowserProRelativeLayout = (OnBrowserProRelativeLayout) currentAlbumController;
+                    final DynamicGridView gridView = (DynamicGridView) OnBrowserProRelativeLayout.findViewById(R.id.home_grid);
                     final List<GridItem> gridList = ((GridAdapter) gridView.getAdapter()).getList();
 
                     omnibox.setVisibility(View.GONE);
@@ -2121,7 +2120,7 @@ public class BrowserActivity extends Activity implements BrowserController {
                                 action.addGridItem(item);
                             }
                             action.close();
-                            UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_relayout_successful);
+                            OnBrowserProToast.show(BrowserActivity.this, R.string.toast_relayout_successful);
                         }
                     });
 
@@ -2199,7 +2198,7 @@ public class BrowserActivity extends Activity implements BrowserController {
                 String s = stringList.get(position);
                 if (s.equals(array[0])) { // New tab
                     addAlbum(getString(R.string.album_untitled), gridItem.getURL(), false, null);
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_new_tab_successful);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_new_tab_successful);
                 } else if (s.equals(array[3])) { // Edit
                     showEditDialog(gridItem);
                 } else if (s.equals(array[4])) { // Delete
@@ -2209,8 +2208,8 @@ public class BrowserActivity extends Activity implements BrowserController {
                     action.close();
                     BrowserActivity.this.deleteFile(gridItem.getFilename());
 
-                    initHomeGrid((UltimateBrowserProjectRelativeLayout) currentAlbumController, true);
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_delete_successful);
+                    initHomeGrid((OnBrowserProRelativeLayout) currentAlbumController, true);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_delete_successful);
                 }
 
                 dialog.hide();
@@ -2248,7 +2247,7 @@ public class BrowserActivity extends Activity implements BrowserController {
                 String s = stringList.get(position);
                 if (s.equals(array[0])) { // New tab
                     addAlbum(getString(R.string.album_untitled), record.getURL(), false, null);
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_new_tab_successful);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_new_tab_successful);
                 } else if (s.equals(array[1])) { // Copy link
                     BrowserUnit.copyURL(BrowserActivity.this, record.getURL());
                 } else if (s.equals(array[2])) { // Share
@@ -2271,7 +2270,7 @@ public class BrowserActivity extends Activity implements BrowserController {
                     updateBookmarks();
                     updateAutoComplete();
 
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_delete_successful);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_delete_successful);
                 }
 
                 dialog.hide();
@@ -2306,7 +2305,7 @@ public class BrowserActivity extends Activity implements BrowserController {
 
                 String text = editText.getText().toString().trim();
                 if (text.isEmpty()) {
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_input_empty);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_input_empty);
                     return true;
                 }
 
@@ -2355,7 +2354,7 @@ public class BrowserActivity extends Activity implements BrowserController {
 
                 String text = editText.getText().toString().trim();
                 if (text.isEmpty()) {
-                    UltimateBrowserProjectToast.show(BrowserActivity.this, R.string.toast_input_empty);
+                    OnBrowserProToast.show(BrowserActivity.this, R.string.toast_input_empty);
                     return true;
                 }
 
@@ -2381,11 +2380,11 @@ public class BrowserActivity extends Activity implements BrowserController {
 
     private boolean prepareRecord() {
         if (currentAlbumController == null ||
-                !(currentAlbumController instanceof UltimateBrowserProjectWebView))
+                !(currentAlbumController instanceof OnBrowserProWebView))
             return false;
 
 
-        UltimateBrowserProjectWebView webView = (UltimateBrowserProjectWebView) currentAlbumController;
+        OnBrowserProWebView webView = (OnBrowserProWebView) currentAlbumController;
         String title = webView.getTitle();
         String url = webView.getUrl();
         if (title == null

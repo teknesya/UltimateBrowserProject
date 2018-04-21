@@ -30,7 +30,7 @@ import on.browser.pro.R;
 import on.browser.pro.Task.ExportBookmarksTask;
 import on.browser.pro.Task.ExportWhitelistTask;
 import on.browser.pro.Unit.IntentUnit;
-import on.browser.pro.View.UltimateBrowserProjectToast;
+import on.browser.pro.View.OnBrowserProToast;
 
 public class SettingFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -175,7 +175,7 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
                 showLicenseDialog();
                 break;
             case R.string.setting_title_version:
-                UltimateBrowserProjectToast.show(getActivity(), R.string.toast_emoji);
+                OnBrowserProToast.show(getActivity(), R.string.toast_emoji);
                 break;
             case R.string.setting_title_update:
                 startActivity(new Intent(getActivity().getApplicationContext(), UpdateActivity.class));
@@ -203,11 +203,11 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
         } else if (key.equals(getString(R.string.sp_theme))) {
             String summary = tEntries[Integer.valueOf(sp.getString(key, "0"))];
             theme.setSummary(summary);
-            UltimateBrowserProjectToast.show(getActivity(), R.string.toast_need_restart);
+            OnBrowserProToast.show(getActivity(), R.string.toast_need_restart);
         } else if (key.equals(getString(R.string.sp_anchor))) {
             String summary = tpEntries[Integer.valueOf(sp.getString(key, "1"))];
             tabPosition.setSummary(summary);
-            UltimateBrowserProjectToast.show(getActivity(), R.string.toast_need_restart);
+            OnBrowserProToast.show(getActivity(), R.string.toast_need_restart);
         } else if (key.equals(getString(R.string.sp_volume))) {
             String summary = vcEntries[Integer.valueOf(sp.getString(key, "1"))];
             volumeControl.setSummary(summary);

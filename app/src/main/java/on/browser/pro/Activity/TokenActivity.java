@@ -15,7 +15,7 @@ import android.widget.EditText;
 import com.rey.material.widget.Button;
 
 import on.browser.pro.R;
-import on.browser.pro.View.UltimateBrowserProjectToast;
+import on.browser.pro.View.OnBrowserProToast;
 
 public class TokenActivity extends AppCompatActivity {
 
@@ -45,13 +45,13 @@ public class TokenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (tokenEdit.getText().toString().trim().isEmpty()) {
-                    UltimateBrowserProjectToast.show(TokenActivity.this, R.string.toast_input_empty);
+                    OnBrowserProToast.show(TokenActivity.this, R.string.toast_input_empty);
                 } else {
                     sp.edit().putString(
                             getString(R.string.sp_readability_token),
                             tokenEdit.getText().toString().trim()
                     ).apply();
-                    UltimateBrowserProjectToast.show(TokenActivity.this, R.string.toast_add_token_successful);
+                    OnBrowserProToast.show(TokenActivity.this, R.string.toast_add_token_successful);
                 }
             }
         });

@@ -10,19 +10,19 @@ import org.xdevs23.debugUtils.StackTraceParser;
 import on.browser.pro.R;
 import on.browser.pro.Unit.BrowserUnit;
 import on.browser.pro.Unit.ViewUnit;
-import on.browser.pro.View.UltimateBrowserProjectToast;
-import on.browser.pro.View.UltimateBrowserProjectWebView;
+import on.browser.pro.View.OnBrowserProToast;
+import on.browser.pro.View.OnBrowserProWebView;
 
 public class ScreenshotTask extends AsyncTask<Void, Void, Boolean> {
 
     private Context context;
     private ProgressDialog dialog;
-    private UltimateBrowserProjectWebView webView;
+    private OnBrowserProWebView webView;
     private int windowWidth;
     private float contentHeight;
     private String title, path;
 
-    public ScreenshotTask(Context context, UltimateBrowserProjectWebView webView) {
+    public ScreenshotTask(Context context, OnBrowserProWebView webView) {
         this.context = context;
         this.dialog = null;
         this.webView = webView;
@@ -62,8 +62,8 @@ public class ScreenshotTask extends AsyncTask<Void, Void, Boolean> {
         dialog.dismiss();
 
         if (result)
-             UltimateBrowserProjectToast.show(context, context.getString(R.string.toast_screenshot_successful) + path);
-        else UltimateBrowserProjectToast.show(context, R.string.toast_screenshot_failed);
+             OnBrowserProToast.show(context, context.getString(R.string.toast_screenshot_successful) + path);
+        else OnBrowserProToast.show(context, R.string.toast_screenshot_failed);
 
     }
 

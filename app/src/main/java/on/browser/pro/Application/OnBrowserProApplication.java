@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.google.firebase.crash.FirebaseCrash;
 
-public class UltimateBrowserProjectApplication extends Application {
+public class OnBrowserProApplication extends Application {
 
     @Override
     public void onCreate() {

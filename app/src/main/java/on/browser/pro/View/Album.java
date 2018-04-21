@@ -83,7 +83,7 @@ public class Album {
         albumView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                UltimateBrowserProjectToast.show(context, albumTitle.getText().toString());
+                OnBrowserProToast.show(context, albumTitle.getText().toString());
                 return true;
             }
         });

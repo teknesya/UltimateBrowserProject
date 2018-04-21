@@ -5,7 +5,7 @@ import org.xdevs23.debugUtils.Logging;
 import java.util.LinkedList;
 import java.util.List;
 
-import on.browser.pro.View.UltimateBrowserProjectWebView;
+import on.browser.pro.View.OnBrowserProWebView;
 
 public class BrowserContainer {
 
@@ -16,8 +16,8 @@ public class BrowserContainer {
     }
 
     public synchronized static void set(AlbumController controller, int index) {
-        if (list.size() - 1 >= index && list.get(index) instanceof UltimateBrowserProjectWebView)
-            ((UltimateBrowserProjectWebView) list.get(index)).destroy();
+        if (list.size() - 1 >= index && list.get(index) instanceof OnBrowserProWebView)
+            ((OnBrowserProWebView) list.get(index)).destroy();
         else Logging.logd("Something is wrong in BrowserContainer.set()");
 
         list.set(index, controller);
@@ -29,16 +29,16 @@ public class BrowserContainer {
     public synchronized static void add(AlbumController controller, int index) { list.add(index, controller); }
 
     public synchronized static void remove(int index) {
-        if (list.size() - 1 >= index && list.get(index) instanceof UltimateBrowserProjectWebView)
-            ((UltimateBrowserProjectWebView) list.get(index)).destroy();
+        if (list.size() - 1 >= index && list.get(index) instanceof OnBrowserProWebView)
+            ((OnBrowserProWebView) list.get(index)).destroy();
         else Logging.logd("Something is wrong in BrowserContainer.remove()");
 
         list.remove(index);
     }
 
     public synchronized static void remove(AlbumController controller) {
-        if (controller instanceof UltimateBrowserProjectWebView)
-            ((UltimateBrowserProjectWebView) controller).destroy();
+        if (controller instanceof OnBrowserProWebView)
+            ((OnBrowserProWebView) controller).destroy();
         else Logging.logd("Something is wrong in BrowserContainer.remove() 2");
 
         list.remove(controller);
@@ -58,8 +58,8 @@ public class BrowserContainer {
 
     public synchronized static void clear() {
         for (AlbumController albumController : list)
-            if (albumController instanceof UltimateBrowserProjectWebView)
-                ((UltimateBrowserProjectWebView) albumController).destroy();
+            if (albumController instanceof OnBrowserProWebView)
+                ((OnBrowserProWebView) albumController).destroy();
             else Logging.logd("Something is wrong in BrowserContainer.clear()");
 
 

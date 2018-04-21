@@ -12,7 +12,7 @@ import on.browser.pro.Activity.BrowserActivity;
 import on.browser.pro.Browser.AlbumController;
 import on.browser.pro.Browser.BrowserContainer;
 import on.browser.pro.R;
-import on.browser.pro.View.UltimateBrowserProjectWebView;
+import on.browser.pro.View.OnBrowserProWebView;
 
 public class NotificationUnit {
 
@@ -31,7 +31,7 @@ public class NotificationUnit {
 
         int total = 0;
         for (AlbumController controller : BrowserContainer.list()) {
-            if (controller instanceof UltimateBrowserProjectWebView) total++;
+            if (controller instanceof OnBrowserProWebView) total++;
         }
 
         builder.setNumber(total);

@@ -21,8 +21,8 @@ import on.browser.pro.Unit.IntentUnit;
 import on.browser.pro.Unit.NotificationUnit;
 import on.browser.pro.Unit.RecordUnit;
 import on.browser.pro.Unit.ViewUnit;
-import on.browser.pro.View.UltimateBrowserProjectContextWrapper;
-import on.browser.pro.View.UltimateBrowserProjectWebView;
+import on.browser.pro.View.OnBrowserProContextWrapper;
+import on.browser.pro.View.OnBrowserProWebView;
 
 public class HolderService extends Service implements BrowserController {
 
@@ -74,9 +74,9 @@ public class HolderService extends Service implements BrowserController {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         try {
-            UltimateBrowserProjectWebView webView = new UltimateBrowserProjectWebView(new UltimateBrowserProjectContextWrapper(this));
+            OnBrowserProWebView webView = new OnBrowserProWebView(new OnBrowserProContextWrapper(this));
             webView.setBrowserController(this);
-            webView.setFlag(BrowserUnit.FLAG_UltimateBrowserProject);
+            webView.setFlag(BrowserUnit.FLAG_OnBrowserPro);
             webView.setAlbumCover(null);
             webView.setAlbumTitle(getString(R.string.album_untitled));
             ViewUnit.bound(this, webView, false);

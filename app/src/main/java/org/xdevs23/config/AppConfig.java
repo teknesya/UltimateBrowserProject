@@ -9,7 +9,7 @@ public final class AppConfig {
 	
 	public final
 		static String
-			    appName = "UltimateBrowserProject",
+			    appName = "OnBrowserPro",
 			versionName = String.valueOf(Version.major)    + dot +
 						  String.valueOf(Version.minor)    + dot +
 						  String.valueOf(Version.build) /* + dot +
@@ -18,7 +18,7 @@ public final class AppConfig {
               secDevUrl = "http://xdevs23.bplaced.com/",
 			 updateRoot = mainDevUrl   + "update/",
              updateRootSec = secDevUrl + "upload/update/UBP/",
-			 myDataRoot = Environment.getDataDirectory() + "data/io.github.UltimateBrowserProject/",
+			 myDataRoot = Environment.getDataDirectory() + "data/io.github.OnBrowserPro/",
 			 debugTag   = appName,
 			 dbgVer     = "dbg"
 	;

@@ -19,7 +19,7 @@ so manually move them:
 * .idea\uiDesigner.xml
 * .idea\vcs.xml
 * .idea\workspace.xml
-* UltimateBrowserProject.iml
+* OnBrowserPro.iml
 * ant.properties
 * build.xml
 * proguard-project.txt

@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 
 import on.browser.pro.R;
 import on.browser.pro.Unit.BrowserUnit;
-import on.browser.pro.View.UltimateBrowserProjectToast;
+import on.browser.pro.View.OnBrowserProToast;
 
 public class ExportBookmarksTask extends AsyncTask<Void, Void, Boolean> {
 
@@ -44,9 +44,9 @@ public class ExportBookmarksTask extends AsyncTask<Void, Void, Boolean> {
         dialog.dismiss();
 
         if (result)
-            UltimateBrowserProjectToast.show(context, context.getString(R.string.toast_export_bookmarks_successful) + path);
+            OnBrowserProToast.show(context, context.getString(R.string.toast_export_bookmarks_successful) + path);
         else
-            UltimateBrowserProjectToast.show(context, R.string.toast_export_bookmarks_failed);
+            OnBrowserProToast.show(context, R.string.toast_export_bookmarks_failed);
 
     }
 

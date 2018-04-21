@@ -1,7 +1,7 @@
-UltimateBrowserProject
+OnBrowserPro
 ===
 
-UltimateBrowserProject is a browser that aims to do the work unlike any other browser. Currently, it is in beta and supports the following functions:
+OnBrowserPro is a browser that aims to do the work unlike any other browser. Currently, it is in beta and supports the following functions:
 
 ### Custom home:
 
@@ -35,7 +35,7 @@ Now you can swipe the omnibox, aka Address Bar to switch between tabs!
 
 ## Load in background:
 
- 1. Set UltimateBrowserProject as your __default browser__.
+ 1. Set OnBrowserPro as your __default browser__.
 
  2. __A Single tap__ will open links in background, and show a clickable notification in statusbar.
 
@@ -57,21 +57,21 @@ Since AdBlock maybe cause some websites display error, you can add them to `Sett
 
 ## Readability:
 
-UltimateBrowserProject supports Readability mode but it needs the __Readability API Token__.
+OnBrowserPro supports Readability mode but it needs the __Readability API Token__.
 
 To get the token you should go to [Readability Developer APIs](https://www.readability.com/developers/api "Readability Developer APIs") and set it in `Setting/Readability/Token`.
 
 
 ## Screenshot:
 
-UltimateBrowserProject can __capture entire webpages!__ .
+OnBrowserPro can __capture entire webpages!__ .
 
 But Unfortunately, that doesn't mean you can screenshot a very long page, which may cause the browser to go __Out Of Memory__.
 
 
 ## Log Reporting:
 
-UltimateBrowserProject can automatically capture __Log Reports__ when it crashes.
+OnBrowserPro can automatically capture __Log Reports__ when it crashes.
 
 When the crash takes place, an Alert Dialog will pop up requesting you to send the report. All you have to do is add comments regarding the problem __(OPTIONAL)__, and click OK.
 Everything else will be handled by the application itself!

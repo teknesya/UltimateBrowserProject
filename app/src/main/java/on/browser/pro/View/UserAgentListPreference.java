@@ -81,7 +81,7 @@ public class UserAgentListPreference extends ListPreference {
 
                 String ua = editText.getText().toString().trim();
                 if (ua.isEmpty()) {
-                    UltimateBrowserProjectToast.show(getContext(), R.string.toast_input_empty);
+                    OnBrowserProToast.show(getContext(), R.string.toast_input_empty);
                     return true;
                 } else {
                     sp.edit().putString(getContext().getString(R.string.sp_user_agent), "2").commit();

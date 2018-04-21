@@ -16,7 +16,7 @@ import android.view.MenuItem;
 import on.browser.pro.Fragment.ClearFragment;
 import on.browser.pro.R;
 import on.browser.pro.Unit.BrowserUnit;
-import on.browser.pro.View.UltimateBrowserProjectToast;
+import on.browser.pro.View.OnBrowserProToast;
 
 public class ClearActivity extends AppCompatActivity {
     public static final String DB_CHANGE = "DB_CHANGE";
@@ -102,6 +102,6 @@ public class ClearActivity extends AppCompatActivity {
 
         dbChange = true;
 
-        UltimateBrowserProjectToast.show(this, R.string.toast_clear_successful);
+        OnBrowserProToast.show(this, R.string.toast_clear_successful);
     }
 }

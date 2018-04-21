@@ -24,8 +24,8 @@ import on.browser.pro.Unit.BrowserUnit;
 import on.browser.pro.Unit.IntentUnit;
 import on.browser.pro.Unit.RecordUnit;
 import on.browser.pro.View.DialogAdapter;
-import on.browser.pro.View.UltimateBrowserProjectContextWrapper;
-import on.browser.pro.View.UltimateBrowserProjectToast;
+import on.browser.pro.View.OnBrowserProContextWrapper;
+import on.browser.pro.View.OnBrowserProToast;
 
 public class HolderActivity extends Activity {
     private static final int TIMER_SCHEDULE_DEFAULT = 512;
@@ -97,7 +97,7 @@ public class HolderActivity extends Activity {
         if (timer != null) timer.cancel();
 
         if (background)
-            UltimateBrowserProjectToast.show(this, R.string.toast_load_in_background);
+            OnBrowserProToast.show(this, R.string.toast_load_in_background);
 
 
         first  = null;
@@ -109,7 +109,7 @@ public class HolderActivity extends Activity {
     }
 
     private void showHolderDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(new UltimateBrowserProjectContextWrapper(this));
+        AlertDialog.Builder builder = new AlertDialog.Builder(new OnBrowserProContextWrapper(this));
         builder.setCancelable(true);
 
         FrameLayout linearLayout = (FrameLayout) getLayoutInflater().inflate(R.layout.dialog_list, null, false);

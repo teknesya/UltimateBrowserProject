@@ -54,7 +54,7 @@ public class WhitelistAdapter extends ArrayAdapter<String> {
                 adBlock.removeDomain(list.get(position));
                 list.remove(position);
                 notifyDataSetChanged();
-                UltimateBrowserProjectToast.show(context, R.string.toast_delete_successful);
+                OnBrowserProToast.show(context, R.string.toast_delete_successful);
             }
         });
 

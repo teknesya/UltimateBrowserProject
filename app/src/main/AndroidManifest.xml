@@ -15,7 +15,7 @@
 
     <!-- Application -->
     <application android:label="@string/app_name"
-                 android:name="on.browser.pro.Application.UltimateBrowserProjectApplication"
+                 android:name="on.browser.pro.Application.OnBrowserProApplication"
                  android:icon="@drawable/ic_launcher"
                  android:allowBackup="true"
                  android:enabled="true"

@@ -80,10 +80,10 @@ public class SearchEngineListPreference extends ListPreference {
 
                 String domain = editText.getText().toString().trim();
                 if (domain.isEmpty()) {
-                    UltimateBrowserProjectToast.show(getContext(), R.string.toast_input_empty);
+                    OnBrowserProToast.show(getContext(), R.string.toast_input_empty);
                     return true;
                 } else if (!BrowserUnit.isURL(domain)) {
-                    UltimateBrowserProjectToast.show(getContext(), R.string.toast_invalid_domain);
+                    OnBrowserProToast.show(getContext(), R.string.toast_invalid_domain);
                     return true;
                 } else {
                     sp.edit().putString(getContext().getString(R.string.sp_search_engine), "5").commit();

@@ -10,7 +10,7 @@ import on.browser.pro.Unit.RecordUnit;
 
 public class RecordHelper extends SQLiteOpenHelper {
     
-    private static final String DATABASE_NAME = "UltimateBrowserProject3.db";
+    private static final String DATABASE_NAME = "OnBrowserPro3.db";
     private static final int DATABASE_VERSION = 1;
 
     public RecordHelper(Context context) {

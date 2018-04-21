@@ -335,7 +335,7 @@
         导入白名单
     </string>
     <string name="whitelist_filename">
-        UltimateBrowserProject白名单
+        OnBrowserPro白名单
     </string>
     <!-- Readability setting -->
     <string name="setting_title_readability">
@@ -369,7 +369,7 @@
         导入书签
     </string>
     <string name="bookmarks_filename">
-        UltimateBrowserProject书签
+        OnBrowserPro书签
     </string>
     <!-- Clear -->
     <string name="setting_title_clear_control">

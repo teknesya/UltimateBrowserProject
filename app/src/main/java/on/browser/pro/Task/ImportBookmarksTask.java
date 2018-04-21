@@ -9,7 +9,7 @@ import java.io.File;
 import on.browser.pro.Fragment.SettingFragment;
 import on.browser.pro.R;
 import on.browser.pro.Unit.BrowserUnit;
-import on.browser.pro.View.UltimateBrowserProjectToast;
+import on.browser.pro.View.OnBrowserProToast;
 
 public class ImportBookmarksTask extends AsyncTask<Void, Void, Boolean> {
 
@@ -52,9 +52,9 @@ public class ImportBookmarksTask extends AsyncTask<Void, Void, Boolean> {
 
         if (result) {
             fragment.setDBChange(true);
-            UltimateBrowserProjectToast.show(context, context.getString(R.string.toast_import_bookmarks_successful) + count);
+            OnBrowserProToast.show(context, context.getString(R.string.toast_import_bookmarks_successful) + count);
         } else
-            UltimateBrowserProjectToast.show(context, R.string.toast_import_bookmarks_failed);
+            OnBrowserProToast.show(context, R.string.toast_import_bookmarks_failed);
     }
 
 }

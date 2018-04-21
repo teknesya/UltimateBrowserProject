@@ -17,10 +17,10 @@
 
     <!-- Info -->
     <string name="app_name" translatable="false">
-        UltimateBrowserProject
+        OnBrowser Pro
     </string>
     <string name="app_version" translatable="false">
-        3.0.0
+        1.0.1
     </string>
 
     <!-- AndroidSlidingUpPanel -->
@@ -94,17 +94,17 @@
         http://git.io/vUruk
     </string>
 
-    <!-- UltimateBrowserProject -->
-    <string name="license_title_UltimateBrowserProject" translatable="false">
-        UltimateBrowserProject
+    <!-- OnBrowserPro -->
+    <string name="license_title_OnBrowserPro" translatable="false">
+        OnBrowserPro
     </string>
-    <string name="license_content_UltimateBrowserProject" translatable="false">
+    <string name="license_content_OnBrowserPro" translatable="false">
         Apache License Version 2.0
     </string>
-    <string name="license_author_UltimateBrowserProject" translatable="false">
+    <string name="license_author_OnBrowserPro" translatable="false">
         Thunderbottom, Takahirom, James Wang, Simao (xdevs23)
     </string>
-    <string name="license_url_UltimateBrowserProject" translatable="false">
+    <string name="license_url_OnBrowserPro" translatable="false">
         http://git.io/vIG0r
     </string>
 
@@ -185,7 +185,7 @@
         <item>@string/license_title_android_ago</item>
         <item>@string/license_title_dynamic_grid</item>
         <item>@string/license_title_lightning</item>
-        <item>@string/license_title_UltimateBrowserProject</item>
+        <item>@string/license_title_OnBrowserPro</item>
         <item>@string/license_title_ninja</item>
         <item>@string/license_title_typo_css</item>
         <item>@string/license_title_fabric</item>
@@ -198,7 +198,7 @@
         <item>@string/license_content_android_ago</item>
         <item>@string/license_content_dynamic_grid</item>
         <item>@string/license_content_lightning</item>
-        <item>@string/license_content_UltimateBrowserProject</item>
+        <item>@string/license_content_OnBrowserPro</item>
         <item>@string/license_content_ninja</item>
         <item>@string/license_content_typo_css</item>
         <item>@string/license_content_fabric</item>
@@ -211,7 +211,7 @@
         <item>@string/license_author_android_ago</item>
         <item>@string/license_author_dynamic_grid</item>
         <item>@string/license_author_lightning</item>
-        <item>@string/license_author_UltimateBrowserProject</item>
+        <item>@string/license_author_OnBrowserPro</item>
         <item>@string/license_author_ninja</item>
         <item>@string/license_author_typo_css</item>
         <item>@string/license_author_fabric</item>
@@ -224,7 +224,7 @@
         <item>@string/license_url_android_ago</item>
         <item>@string/license_url_dynamic_grid</item>
         <item>@string/license_url_lightning</item>
-        <item>@string/license_url_UltimateBrowserProject</item>
+        <item>@string/license_url_OnBrowserPro</item>
         <item>@string/license_url_ninja</item>
         <item>@string/license_url_typo_css</item>
         <item>@string/license_url_fabric</item>

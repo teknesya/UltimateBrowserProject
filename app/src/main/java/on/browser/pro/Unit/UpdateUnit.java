@@ -11,7 +11,7 @@ public class UpdateUnit {
 
             URL_CHANGELOG               = URL_RAW_UBP_GITHUB_REPO + "/update/changelog.txt",
 
-            URL_APK                     = URL_RAW_UBP_GITHUB_REPO + "/update/UltimateBrowserProject.apk",
+            URL_APK                     = URL_RAW_UBP_GITHUB_REPO + "/update/OnBrowserPro.apk",
 
             _EMPTY                      = ""    // Ignore this
 

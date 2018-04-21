@@ -1,15 +1,15 @@
-## This project is now [BEERWARE](https://github.com/Thunderbottom/UltimateBrowserProject#license) and most likely dead. So you can use the code from here or you can also help [@xdevs23](https://github.com/xdevs23/) instead, to build a great browser! Check out [Cornowser](https://github.com/xdevs23/Cornowser/). It is based on Chromium with a GREAT HTML5TEST Score
+## This project is now [BEERWARE](https://github.com/Thunderbottom/ultimatebrowserproject#license) and most likely dead. So you can use the code from here or you can also help [@xdevs23](https://github.com/xdevs23/) instead, to build a great browser! Check out [Cornowser](https://github.com/xdevs23/Cornowser/). It is based on Chromium with a GREAT HTML5TEST Score
 
 ![Banner](/Artworks/UBP Banner.png)
 
-[![Owner](https://img.shields.io/badge/Owners-Takahirom%2C%20xdevs23%2C%20Thunderbottom-orange.svg)](http://github.com/Thunderbottom/UltimateBrowserProject)    [![GitHub version](https://badge.fury.io/gh/Thunderbottom%2FUltimateBrowserProject.svg)](http://badge.fury.io/gh/Thunderbottom%2FUltimateBrowserProject)     [![Build Status](https://travis-ci.org/Thunderbottom/UltimateBrowserProject.svg)](https://travis-ci.org/Thunderbottom/UltimateBrowserProject)     ![Custom Badge](https://img.shields.io/badge/Active%20Developers-Project%20has%20been%20discontinued-brightgreen.svg)
+[![Owner](https://img.shields.io/badge/Owners-Takahirom%2C%20xdevs23%2C%20Thunderbottom-orange.svg)](http://github.com/Thunderbottom/OnBrowserPro)    [![GitHub version](https://badge.fury.io/gh/Thunderbottom%2FOnBrowserPro.svg)](http://badge.fury.io/gh/Thunderbottom%2FOnBrowserPro)     [![Build Status](https://travis-ci.org/Thunderbottom/OnBrowserPro.svg)](https://travis-ci.org/Thunderbottom/OnBrowserPro)     ![Custom Badge](https://img.shields.io/badge/Active%20Developers-Project%20has%20been%20discontinued-brightgreen.svg)
 ===
 
 ## Downloads - 
 
-[Download Latest Stable Version 1.4.6](https://github.com/Thunderbottom/UltimateBrowserProject/releases/download/1.4.6/UltimateBrowserProject.v.1.4.6.apk)
+[Download Latest Stable Version 1.4.6](https://github.com/Thunderbottom/OnBrowserPro/releases/download/1.4.6/OnBrowserPro.v.1.4.6.apk)
 
-[Download Latest Beta Version (1.0β)](https://github.com/Thunderbottom/UltimateBrowserProject/releases/download/latestbeta/UltimateBrowserProject.apk)
+[Download Latest Beta Version (1.0β)](https://github.com/Thunderbottom/OnBrowserPro/releases/download/latestbeta/OnBrowserPro.apk)
 
 ## Translations by:
 
@@ -34,7 +34,7 @@
 ## License:
 
 ```
-UltimateBrowserProject
+UltimateBrowser Project
 Copyright (C) 2015 Thunderbottom
 
 "THE BEER-WARE LICENSE" (Revision 42):

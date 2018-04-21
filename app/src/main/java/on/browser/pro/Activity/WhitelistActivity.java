@@ -20,7 +20,7 @@ import on.browser.pro.Browser.AdBlock;
 import on.browser.pro.Database.RecordAction;
 import on.browser.pro.R;
 import on.browser.pro.Unit.BrowserUnit;
-import on.browser.pro.View.UltimateBrowserProjectToast;
+import on.browser.pro.View.OnBrowserProToast;
 import on.browser.pro.View.WhitelistAdapter;
 
 public class WhitelistActivity extends AppCompatActivity {
@@ -59,20 +59,20 @@ public class WhitelistActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String domain = editText.getText().toString().trim();
                 if (domain.isEmpty())
-                    UltimateBrowserProjectToast.show(WhitelistActivity.this, R.string.toast_input_empty);
+                    OnBrowserProToast.show(WhitelistActivity.this, R.string.toast_input_empty);
                 else if (!BrowserUnit.isURL(domain))
-                    UltimateBrowserProjectToast.show(WhitelistActivity.this, R.string.toast_invalid_domain);
+                    OnBrowserProToast.show(WhitelistActivity.this, R.string.toast_invalid_domain);
                 else {
                     RecordAction action = new RecordAction(WhitelistActivity.this);
                     action.open(true);
                     if (action.checkDomain(domain)) {
-                        UltimateBrowserProjectToast.show(WhitelistActivity.this, R.string.toast_domain_already_exists);
+                        OnBrowserProToast.show(WhitelistActivity.this, R.string.toast_domain_already_exists);
                     } else {
                         AdBlock adBlock = new AdBlock(WhitelistActivity.this);
                         adBlock.addDomain(domain.trim());
                         list.add(0, domain.trim());
                         adapter.notifyDataSetChanged();
-                        UltimateBrowserProjectToast.show(WhitelistActivity.this, R.string.toast_add_whitelist_successful);
+                        OnBrowserProToast.show(WhitelistActivity.this, R.string.toast_add_whitelist_successful);
                     }
                     action.close();
                 }

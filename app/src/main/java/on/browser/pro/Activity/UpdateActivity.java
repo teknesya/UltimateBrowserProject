@@ -71,7 +71,7 @@ public class UpdateActivity extends AppCompatActivity {
 	
 	private static       String updatedApk;
 	private static		 String updApkData = Environment.getDataDirectory() 
-										+ "/data/io.github.UltimateBrowserProject/files/mobile/UltimateBrowserProject.apk";
+										+ "/data/io.github.OnBrowserPro/files/mobile/OnBrowserPro.apk";
 
     private static       int    latestVersionCode = 0;
 
@@ -164,10 +164,10 @@ public class UpdateActivity extends AppCompatActivity {
 		try {
             String endR = "";
 			if(enableRoot) endR = RootController.runCommand(
-                    "am force-stop io.github.UltimateBrowserProject && " +
+                    "am force-stop io.github.OnBrowserPro && " +
                     "pm install -r " + updatedApk + " && " +
-					"am start -n io.github.UltimateBrowserProject/.Activity.BrowserActivity && " +
-					"am start -n io.github.UltimateBrowserProject/.Activity.UpdateActivity && exit");
+					"am start -n io.github.OnBrowserPro/.Activity.BrowserActivity && " +
+					"am start -n io.github.OnBrowserPro/.Activity.UpdateActivity && exit");
 			else startNRUpdateInstallation();
 
             if(endR.length() > 0 && endR.toLowerCase().contains("failed")) {

@@ -41,7 +41,7 @@ import on.browser.pro.Browser.AdBlock;
 import on.browser.pro.Database.Record;
 import on.browser.pro.Database.RecordAction;
 import on.browser.pro.R;
-import on.browser.pro.View.UltimateBrowserProjectToast;
+import on.browser.pro.View.OnBrowserProToast;
 
 public class BrowserUnit {
 
@@ -59,7 +59,7 @@ public class BrowserUnit {
             FLAG_BOOKMARKS = 0x100,
             FLAG_HISTORY   = 0x101,
             FLAG_HOME = 0x102,
-            FLAG_UltimateBrowserProject = 0x103
+            FLAG_OnBrowserPro = 0x103
                     ;
 
     public static final String
@@ -75,7 +75,7 @@ public class BrowserUnit {
             BOOKMARK_TIME = "{time}";
 
     public static final String
-            INTRODUCTION_PREFIX = "UltimateBrowserProject_introduction_",
+            INTRODUCTION_PREFIX = "OnBrowserPro_introduction_",
             INTRODUCTION_EN = INTRODUCTION_PREFIX + "en" + SUFFIX_HTML,
             INTRODUCTION_DE = INTRODUCTION_PREFIX + "de" + SUFFIX_HTML;
 
@@ -218,7 +218,7 @@ public class BrowserUnit {
         ClipboardManager manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData data = ClipData.newPlainText(null, url.trim());
         manager.setPrimaryClip(data);
-        UltimateBrowserProjectToast.show(context, R.string.toast_copy_successful);
+        OnBrowserProToast.show(context, R.string.toast_copy_successful);
     }
 
     public static void download(Context context, String url, String contentDisposition, String mimeType) {
@@ -233,7 +233,7 @@ public class BrowserUnit {
 
         DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         manager.enqueue(request);
-        UltimateBrowserProjectToast.show(context, R.string.toast_start_download);
+        OnBrowserProToast.show(context, R.string.toast_start_download);
     }
 
     public static void downloadCache(Context context, String url, String contentDisposition, String mimeType) {
